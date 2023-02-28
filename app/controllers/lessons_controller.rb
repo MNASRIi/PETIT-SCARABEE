@@ -1,6 +1,30 @@
 class LessonsController < ApplicationController
   def index
-    @lesson = Lesson.all
+    if params[:query].present?
+      @query = params[:query]
+      @lessons = Lesson.where("name LIKE ?", "%#{params[:query]}%")
+    else
+      @lessons = policy_scope(Lesson)
+    end
+  end
+
+  def new
+    @lesson = Lesson.new
+  end
+
+  def create
+    @lesson = Lesson.new(lesson_params)
+    if @lesson.save
+      redirect_to lessons_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show
+  end
+
+  def edit
   end
 
   private
@@ -10,6 +34,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:categry, :title, :description, :price, :descriptiion, :price, :duration)
+    params.require(:lesson).permit(:categry, :title, :description, :price, :descriptiion, :duration)
   end
 end
