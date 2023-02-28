@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :lessons do
-    resources :bookings, only [:create]
+    resources :bookings, only: [:create]
   end
-  resources :bookings, only [:update, :destroy]
+  resources :bookings, only: [:update, :destroy]
 
   # je recupere tous mes bookings
   get "mybookings", to: "pages#mybookings"
