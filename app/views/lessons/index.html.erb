@@ -1,0 +1,46 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All Lessons</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @lessons.count %> lessons out of our <%= Lesson.count %> that match your search.</p>
+      <% else %>
+        <p>All <%= Lesson.count %> Lessons</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @lessons.each do |lesson| %>
+      <div class="col-md-4">
+        <div class="lesson-card">
+          <div class="lesson-card-image" style="background-image: url('<%= lesson.picture_url %>')"></div>
+          <div class="lesson-card-content">
+            <div class="lesson-card-title">
+              <h4><%= lesson.title %></h4>
+            </div>
+            <p><%= lesson.category %></p>
+            <div class="flex">
+              <div class="flex align-items-center">
+                <i class="fa-solid fa-people-line"></i>
+                <span><%= lesson.description %></span>
+              </div>
+              <div class="flex align-items-center ms-3">
+                <i class="fa-solid fa-euro-sign"></i>
+                <span><%= lessona.price %></span>
+              </div>
+            </div>
+          </div>
+          <div class="lesson-card-actions">
+            <%= link_to "More info", lesson_path(lesson) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
