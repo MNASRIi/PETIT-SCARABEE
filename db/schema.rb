@@ -57,8 +57,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_150742) do
     t.string "title"
     t.string "description"
     t.string "address"
-    t.integer "price"
-    t.integer "duration"
+    t.integer "price", default: 10
+    t.integer "duration", default: 1
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

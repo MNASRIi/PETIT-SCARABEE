@@ -17,7 +17,7 @@ puts 'Creating 10 fake users...'
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+
     #avatar:  Faker::Avatar.image,
     description: Faker::Lorem.paragraph,
     email: Faker::Internet.email,
@@ -25,7 +25,7 @@ puts 'Creating 10 fake users...'
 
 
     )
-    user.save!
+    user.save if user.valid?
   end
   puts 'Finished!'
 
@@ -33,12 +33,13 @@ puts 'Creating 10 fake users...'
   50.times do
     lesson = Lesson.new(
       title:    Faker::Game.title,
-      description: Faker::Lorem.paragraph,
+      description: Faker::Lorem.characters(number: 150),
       price: rand(1..500),
       duration: rand(1..5),
-      category:
+      category: Lesson::CATEGORIES.sample,
+      address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     )
     lesson.user = User.all.sample
-    lesson.save!
+    lesson.save if lesson.valid?
   end
   puts 'Finished!'
