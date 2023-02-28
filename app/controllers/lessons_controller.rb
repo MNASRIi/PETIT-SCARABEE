@@ -22,6 +22,10 @@ class LessonsController < ApplicationController
   end
 
   def show
+    set_lesson
+    @booking = Booking.new
+    @booking.lesson = @lesson
+    authorize @lesson
   end
 
   def edit
