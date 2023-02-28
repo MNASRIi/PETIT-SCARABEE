@@ -8,7 +8,16 @@ Rails.application.routes.draw do
   resources :lessons do
     resources :bookings, only: [:create]
   end
-  resources :bookings, only: [:update, :destroy]
+  resources :bookings, only: [:update, :destroy] do
+    member do
+      # patch "bookings/:id/accept"
+      patch :accept
+      # patch "bookings/:id/decline"
+      patch :decline
+      # patch "bookings/:id/cancel"
+      patch :cancel
+    end
+  end
 
   # je recupere tous mes bookings
   get "mybookings", to: "pages#mybookings"
