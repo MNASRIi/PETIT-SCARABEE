@@ -9,7 +9,7 @@ class Lesson < ApplicationRecord
   message: "#{value} is not a valid category" }
   validates :title, presence: true, length: { minimum: 5 }
   validates :description, presence: true, length: { minimum: 100 }
-  validates :price, presence: true, default: 10
-  validates :duration, presence: true, default: 1
+  validates :price, presence: true
+  validates :duration, presence: true
   validates :address, presence: true
 end
