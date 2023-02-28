@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_150742) do
     t.string "category"
     t.string "title"
     t.string "description"
+    t.string "address"
     t.integer "price"
     t.integer "duration"
     t.bigint "user_id", null: false
@@ -74,7 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_150742) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "address"
     t.string "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
