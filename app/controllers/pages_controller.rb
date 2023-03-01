@@ -18,4 +18,5 @@ class PagesController < ApplicationController
   def mylessons
     @mylessons = Lesson.where(user: current_user)
   end
+
 end
