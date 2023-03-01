@@ -22,7 +22,7 @@ class LessonsController < ApplicationController
     if @lesson.save
       redirect_to dashboard_path
     else
-      render 'pages/dashboard', status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
