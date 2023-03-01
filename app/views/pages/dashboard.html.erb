@@ -6,12 +6,8 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="lesson-tab" data-bs-toggle="tab" data-bs-target="#lesson-tab-pane" type="button" role="tab" aria-controls="lesson-tab-pane" aria-selected="false">My Lessons</button>
   </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="new-tab" data-bs-toggle="tab" data-bs-target="#new-tab-pane" type="button" role="tab" aria-controls="new-tab-pane" aria-selected="false">New Lesson</button>
-  </li>
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="booking-tab-pane" role="tabpanel" aria-labelledby="booking-tab" tabindex="0"><%= render 'mybookings', teacher_bookings: @teacher_bookings, student_bookings: @student_bookings %></div>
   <div class="tab-pane fade" id="lesson-tab-pane" role="tabpanel" aria-labelledby="lesson-tab" tabindex="0"><%= render 'mylessons', lesson: @mylesson %></div>
-  <div class="tab-pane fade" id="new-tab-pane" role="tabpanel" aria-labelledby="new-tab" tabindex="0"><%= render 'new_lesson', lesson: @lesson %></div>
 </div>

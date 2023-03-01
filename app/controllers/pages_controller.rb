@@ -8,7 +8,6 @@ class PagesController < ApplicationController
   def dashboard
     mybookings
     mylessons
-    new_lesson
   end
 
   def mybookings
@@ -21,10 +20,5 @@ class PagesController < ApplicationController
 
   def mylessons
     @mylessons = Lesson.where(user: current_user)
-  end
-
-  def new_lesson
-    @lesson = Lesson.create
-    @lesson.user = current_user
   end
 end

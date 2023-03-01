@@ -11,6 +11,7 @@ class LessonsController < ApplicationController
 
   def new
     @lesson = Lesson.new
+    @lesson.user = current_user
     authorize @lesson
   end
 
