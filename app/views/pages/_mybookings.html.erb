@@ -1,39 +1,43 @@
-<div>
-  <h1>My Bookings</h1>
-  <div>
-    <h2>Teacher: Lessons requests</h2>
-    <% unless @teachers_booking.nil? %>
-      <% @teacher_bookings.each do |booking| %>
-          <div>
-            <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}" unless booking.lesson.photo.attached?%>
-            <%= cl_image_tag lesson.photo.key, alt: "Image for #{booking.lesson.title}" if booking.lesson.photo.attached?%>
-            <p><%= booking.lesson.description%></p>
-            <%= link_to "Edit", edit_lesson_path(lesson)%>
-            <%= link_to "Delete", lesson_path(lesson), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-            <%= link_to "Accept this booking", accept_booking_path(booking), data: { turbo_method: :patch } %>
-            <%= link_to "Decline this booking", decline_booking_path(booking), data: { turbo_method: :patch } %>
-          </div>
-        <% end %>
-    <% else %>
-      <h5>No pending lessons requests</h5>
-    <% end %>
+<div class= "container p-3">
+  <h1 class="mb-3 text-align-center">My Bookings</h1>
+  <div class= "card">
+    <h2 class="card-header">Teacher: Lessons requests</h2>
+    <div class="card-body p-3">
+      <% unless @teachers_booking.nil? %>
+        <% @teacher_bookings.each do |booking| %>
+            <div class="mt-3 p-2">
+              <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}", class: "postcard__img" unless booking.lesson.photo.attached?%>
+              <%= cl_image_tag lesson.photo.key, alt: "Image for #{booking.lesson.title}", class: "postcard__img" if booking.lesson.photo.attached?%>
+              <p><%= booking.lesson.description%></p>
+              <%= link_to "Edit", edit_lesson_path(lesson)%>
+              <%= link_to "Delete", lesson_path(lesson), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+              <%= link_to "Accept this booking", accept_booking_path(booking), data: { turbo_method: :patch } %>
+              <%= link_to "Decline this booking", decline_booking_path(booking), data: { turbo_method: :patch } %>
+            </div>
+          <% end %>
+      <% else %>
+        <h5 class="mt-3 p-2">No pending lessons requests</h5>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <h2>Students: My lessons</h2>
-    <% unless @student_bookings.empty? %>
-      <% @student_bookings.each do |booking| %>
-          <div>
-            <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}" unless booking.lesson.photo.attached?%>
-            <%= cl_image_tag lesson.photo.key, alt: "Image for #{booking.lesson.title}" if booking.lesson.photo.attached?%>
-            <p><%= booking.lesson.description%></p>
-            <p><%= booking.status %></p>
-            <%= link_to "Edit", edit_lesson_path(booking.lesson)%>
-            <%= link_to "Cancel this booking", cancel_booking_path(booking), data: { turbo_method: :patch } %>
+  <div class="card">
+    <h2 class="card-header">Students: My lessons</h2>
+    <div class="card-body p-3">
+      <% unless @student_bookings.empty? %>
+        <% @student_bookings.each do |booking| %>
+            <div class="mt-3 p-2">
+              <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}" unless booking.lesson.photo.attached?%>
+              <%= cl_image_tag lesson.photo.key, alt: "Image for #{booking.lesson.title}" if booking.lesson.photo.attached?%>
+              <p><%= booking.lesson.description%></p>
+              <p><%= booking.status %></p>
+              <%= link_to "Edit", edit_lesson_path(booking.lesson)%>
+              <%= link_to "Cancel this booking", cancel_booking_path(booking), data: { turbo_method: :patch } %>
 
-          </div>
-        <% end %>
-    <% else %>
-      <h5>No lesson requested</h5>
-    <% end %>
+            </div>
+          <% end %>
+      <% else %>
+        <h5 class="mt-3 p-2">No lesson requested</h5>
+      <% end %>
+    </div>
   </div>
 </div>

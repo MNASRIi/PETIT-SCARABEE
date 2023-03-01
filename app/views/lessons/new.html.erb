@@ -1,10 +1,15 @@
-<%= simple_form_for @lesson, method: :post, url: lessons_path do |f|  %>
-<%= f.input :title %>
-<%= f.input :category, collection: Lesson::CATEGORIES %>
-<%= f.input :photo, as: :file %>
-<%= f.input :address %>
-<%= f.input :description %>
-<%= f.input :duration %>
-<%= f.input :price %>
-<%= f.submit "Create a lesson" %>
-<% end %>
+<div class="container p-3">
+  <h2>Create a New Lesson</h2>
+
+  <%= simple_form_for @lesson, method: :post, url: lessons_path do |f|  %>
+  <%= f.input :title %>
+  <%= f.input :category, collection: Lesson::CATEGORIES %>
+  <%= f.input :photo, as: :file %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.input :duration %>
+  <%= f.input :price %>
+  <%= f.submit "Create a lesson", class: "btn btn-success mt-3" %>
+  <% end %>
+  <%= link_to "Back", :back, class: "btn btn-primary mt-3" %>
+</div
