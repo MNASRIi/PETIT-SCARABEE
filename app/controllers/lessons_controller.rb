@@ -26,6 +26,13 @@ class LessonsController < ApplicationController
     end
   end
 
+  def show
+    set_lesson
+    @booking = Booking.new
+    @booking.lesson = @lesson
+    authorize @lesson
+  end
+
   def destroy
     @lesson = Lesson.find(params[:id])
     authorize @lesson

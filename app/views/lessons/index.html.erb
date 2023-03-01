@@ -17,22 +17,22 @@
 
   <div class="row">
     <% @lessons.each do |lesson| %>
-      <div class="col-md-4">
+      <div class="col-md-4 p-3">
         <div class="lesson-card">
-          <div class="lesson-card-image" style="background-image: url('<%= lesson.picture_url %>')"></div>
+          <div class="lesson-card-image" style="background-image: url('<%= lesson.photo %>')"></div>
           <div class="lesson-card-content">
             <div class="lesson-card-title">
-              <h4><%= lesson.title %></h4>
+              <h3><%= lesson.title %></h3>
             </div>
             <p><%= lesson.category %></p>
             <div class="flex">
               <div class="flex align-items-center">
                 <i class="fa-solid fa-people-line"></i>
-                <span><%= lesson.description %></span>
+                <span><%= lesson.description.first(10) %></span>
               </div>
               <div class="flex align-items-center ms-3">
                 <i class="fa-solid fa-euro-sign"></i>
-                <span><%= lessona.price %></span>
+                <span><%= lesson.price %></span>
               </div>
             </div>
           </div>
