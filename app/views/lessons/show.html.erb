@@ -1,19 +1,20 @@
-<div class= "container" style ="width:700px">
+<div class= "container mt-2" style ="width:700px">
 
-    <div id="headline" style="height: 300px; border-radius: 10px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @lesson.photo.attached? ? cl_image_path(@lesson.photo.key) : image_path('lesson-default.avif')%>)"><%= @lesson.title %>
+    <div id="headline" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @lesson.photo.attached? ? cl_image_path(@lesson.photo.key) : image_path('lesson-default.avif')%>)"><%= @lesson.title %>
     </div>
-    <div class="card m-2 p-2" id="teacher" style= "border-radius: 10px" >
+
+    <div class="card mt-2 p-2" id="teacher" style= "border-radius: 10px" >
       <p><strong>Teacher:</strong> <%= @lesson.user.first_name%> <%= @lesson.user.last_name%></p>
       <p><strong>My bio:</strong> <%= @lesson.user.description%></p>
     </div>
-    <div class="card m-2 p-2" id="lessondetails" style= "border-radius: 10px">
+    <div class="card mt-2 p-2" id="lessondetails" style= "border-radius: 10px">
       <p><strong>Lesson's description:</strong> <%= @lesson.description%></p>
       <p><strong>Price per hour:</strong> <%= @lesson.price%> euros</p>
       <p><strong>Duration:</strong> <%= @lesson.duration %> hours per session</p>
       <p><strong>Address:</strong> <%= @lesson.address%></p>
     </div>
 
-  <div class= "card m-2 p-2" id="bookingform" style= "border-radius: 10px">
+  <div class= "card mt-2 p-2" id="bookingform" style= "border-radius: 10px">
     <p><strong>Book a new session here<strong></p>
     <%= render "bookings/form" %>
   </div>
