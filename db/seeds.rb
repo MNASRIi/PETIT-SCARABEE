@@ -32,9 +32,9 @@ puts 'Creating 10 fake users...'
   puts 'Creating 50 fake lessons...'
   50.times do
     lesson = Lesson.new(
-      title:    Faker::Game.title,
-      description: Faker::Lorem.characters(number: 150),
-      price: rand(1..500),
+      title:    Faker::Educator.subject,
+      description: Faker::Lorem.paragraph_by_chars(number: 200),
+      price: rand(10..100),
       duration: rand(1..5),
       category: Lesson::CATEGORIES.sample,
       address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
