@@ -19,6 +19,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     @lesson.user = current_user
     authorize @lesson
+    @lesson.save!
     if @lesson.save
       redirect_to dashboard_path
     else
