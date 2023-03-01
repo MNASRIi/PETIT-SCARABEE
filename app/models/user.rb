@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :lessons
   has_many :bookings
 
+  has_many :requested_bookings, through: :lessons, source: :bookings
+
   validates :first_name, presence: true
   validates :last_name, presence: true
 end

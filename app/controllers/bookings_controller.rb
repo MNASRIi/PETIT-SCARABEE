@@ -7,8 +7,8 @@ class BookingsController < ApplicationController
     @booking.lesson = @lesson
     @booking.user = current_user
     @booking.save
-    authorize @lesson #need to check that
-    redirect_to mybookings_path
+    authorize @booking #need to check that
+    redirect_to dashboard_path
   end
 
   def accept
@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
     @booking.status = "Accepted"
     @booking.save
     authorize @booking #need to check that
+    redirect_to dashboard_path
   end
 
   def decline
@@ -23,6 +24,8 @@ class BookingsController < ApplicationController
     @booking.status = "Declined"
     @booking.save
     authorize @booking #need to check that
+    redirect_to dashboard_path
+
   end
 
   def cancel
@@ -30,6 +33,8 @@ class BookingsController < ApplicationController
     @booking.status = "Cancelled"
     @booking.save
     authorize @booking #need to check that
+    redirect_to dashboard_path
+
   end
 
   def destroy

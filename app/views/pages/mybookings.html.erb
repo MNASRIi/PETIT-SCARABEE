@@ -4,8 +4,6 @@
   <li>
   <% booking.lesson.title%> at <% booking.date%> with <% booking.lesson.user%> during <% booking.lesson.duration%> hours - <% booking.status%>
   </li>
-  <%= link_to "Accept this booking", accept_booking_path(booking), data: { turbo_method: :patch } %>
-  <%= link_to "Decline this booking", decline_booking_path(booking), data: { turbo_method: :patch } %>
-  <%= link_to "Cancel this booking", cancel_booking_path(booking), data: { turbo_method: :patch } %>
+  
   <% end %>
 </ul>

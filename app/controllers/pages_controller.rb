@@ -11,11 +11,8 @@ class PagesController < ApplicationController
   end
 
   def mybookings
-    @student_bookings = Booking.where(user: current_user)
-    @teacher_bookings = []
-    @lessons = Lesson.where(user_id: current_user.id)
-    @lessons.each { |lesson| @teacher_bookings << Booking.find_by_lesson_id(lesson.id) }
-    @teacher_bookings.compact!
+    @student_bookings = current_user.bookings
+    @teacher_bookings = current_user.requested_bookings
   end
 
   def mylessons
