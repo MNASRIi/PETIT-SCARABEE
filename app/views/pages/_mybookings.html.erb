@@ -2,17 +2,34 @@
   <h1>My Bookings</h1>
   <div>
     <h2>Teacher: Lessons requests</h2>
-   <%# <% @teacher_bookings.each do |booking| %>
-      <div>
-        <%# <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}" unless booking.lesson.photo.attached?%> %>
-        <%# <%= cl_image_tag lesson.photo.key, alt: "Image for #{booking.lesson.title}" if booking.lesson.photo.attached?%> %>
-        <%# <p><%= booking.lesson.description %></p>
-        <%# <%= link_to "Edit", edit_lesson_path(lesson)  %>
-        <%# <%= link_to "Delete", lesson_path(lesson), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> %>
-      </div>
-    <%# <% end %>
+    <% unless @teachers_booking.nil? %>
+      <% @teacher_bookings.each do |booking| %>
+          <div>
+            <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}" unless booking.lesson.photo.attached?%>
+            <%= cl_image_tag lesson.photo.key, alt: "Image for #{booking.lesson.title}" if booking.lesson.photo.attached?%>
+            <p><%= booking.lesson.description%></p>
+            <%= link_to "Edit", edit_lesson_path(lesson)%>
+            <%= link_to "Delete", lesson_path(lesson), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          </div>
+        <% end %>
+    <% else %>
+      <h5>No pending lessons requests</h5>
+    <% end %>
   </div>
   <div>
     <h2>Students: My lessons</h2>
+    <% unless @student_booking.nil? %>
+      <% @student_bookings.each do |booking| %>
+          <div>
+            <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}" unless booking.lesson.photo.attached?%>
+            <%= cl_image_tag lesson.photo.key, alt: "Image for #{booking.lesson.title}" if booking.lesson.photo.attached?%>
+            <p><%= booking.lesson.description%></p>
+            <%= link_to "Edit", edit_lesson_path(lesson)%>
+            <%= link_to "Delete", lesson_path(lesson), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          </div>
+        <% end %>
+    <% else %>
+      <h5>No lesson requested</h5>
+    <% end %>
   </div>
 </div>

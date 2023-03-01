@@ -6,18 +6,23 @@ class LessonsController < ApplicationController
     else
       @lessons = policy_scope(Lesson)
     end
+    authorize @lessons, @query
   end
 
   def new
     @lesson = Lesson.new
+    @lesson.user = current_user
+    authorize @lesson
   end
 
   def create
     @lesson = Lesson.new(lesson_params)
+    @lesson.user = current_user
+    authorize @lesson
     if @lesson.save
-      redirect_to lessons_path
+      redirect_to dashboard_path
     else
-      render :new, status: :unprocessable_entity
+      render 'pages/dashboard', status: :unprocessable_entity
     end
   end
 
@@ -28,7 +33,24 @@ class LessonsController < ApplicationController
     authorize @lesson
   end
 
+  def destroy
+    @lesson = Lesson.find(params[:id])
+    authorize @lesson
+    @lesson.destroy
+    redirect_to dashboard_path
+  end
+
   def edit
+    @lesson = Lesson.find(params[:id])
+    authorize @lesson
+  end
+
+  def update
+    @lesson = Lesson.find(params[:id])
+    @lesson.update(lesson_params)
+    @lesson.user = current_user
+    authorize @lesson
+    redirect_to dashboard_path
   end
 
   private
@@ -38,6 +60,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:category, :title, :description, :price, :duration)
+    params.require(:lesson).permit(:category, :title, :description, :price, :duration, :photo, :address)
   end
 end
