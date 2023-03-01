@@ -1,0 +1,10 @@
+<%= simple_form_for @lesson, method: :post, url: lessons_path do |f|  %>
+<%= f.input :title %>
+<%= f.input :category, collection: Lesson::CATEGORIES %>
+<%= f.input :photo, as: :file %>
+<%= f.input :address %>
+<%= f.input :description %>
+<%= f.input :duration %>
+<%= f.input :price %>
+<%= f.submit "Create a lesson" %>
+<% end %>

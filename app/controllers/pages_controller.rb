@@ -6,14 +6,19 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    mybookings
+    mylessons
   end
 
   def mybookings
-    @student_bookings = Booking.where(user == current_user)
-    @teacher_bookings = Booking.where(lesson.user == current_user)
+    @student_bookings = Booking.where(user: current_user)
+    @teacher_bookings = []
+    @lessons = Lesson.where(user_id: current_user.id)
+    @lessons.each { |lesson| @teacher_bookings << Booking.find_by_lesson_id(lesson.id) }
+    @teacher_bookings.compact!
   end
 
   def mylessons
-    @lessons = Lesson.where(user == current_user)
+    @mylessons = Lesson.where(user: current_user)
   end
 end

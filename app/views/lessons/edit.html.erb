@@ -1,0 +1,10 @@
+<%= simple_form_for @lesson do |f|  %>
+<%= f.input :title, value: @lesson.title %>
+<%= f.input :category, collection: Lesson::CATEGORIES, value: @lesson.category %>
+<%= f.input :photo, as: :file %>
+<%= f.input :address, value: @lesson.address %>
+<%= f.input :description, value: @lesson.description %>
+<%= f.input :duration, value: @lesson.duration %>
+<%= f.input :price, value: @lesson.price %>
+<%= f.submit "Edit my Lesson" %>
+<% end %>
