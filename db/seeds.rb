@@ -21,7 +21,7 @@ puts 'Creating 10 fake users...'
     #avatar:  Faker::Avatar.image,
     description: Faker::Lorem.paragraph,
     email: Faker::Internet.email,
-    password: (123456),
+    password: "123456",
 
 
     )
