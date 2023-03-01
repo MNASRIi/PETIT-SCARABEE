@@ -23,15 +23,15 @@ class BookingPolicy < ApplicationPolicy
     update?
   end
 
-  def accept
+  def accept?
     true
   end
 
-  def decline
+  def decline?
     true
   end
 
-  def cancel
+  def cancel?
     true
   end
 
