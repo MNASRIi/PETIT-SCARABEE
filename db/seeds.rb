@@ -12,6 +12,24 @@ Booking.destroy_all
 Lesson.destroy_all
 User.destroy_all
 
+ADDRESSES = ["34 Rue de la Hulotais, 35400 Saint-Malo",
+ "27 Rue de l'Epeule, 59100 Roubaix",
+"10 Pl. du Jeu de Paume, 91780 Chalo-Saint-Mars",
+"58 Rue du Faubourg-National, 67000 Strasbourg",
+"69 Rue du Président Roosevelt, 57970 Yutz",
+"41 Rue de Lille, 94550 Chevilly-Larue",
+"84 Av. des Tuileries, 01600 Trévoux",
+"98 Rue de Verdun, 95170 Deuil-la-Barre",
+"31 Rue des Sœurs Macarons, 54000 Nancy",
+"63 Rue Saint-Germain, 27400 Louviers",
+"6 Rue Goya, 37300 Joué-lès-Tours",
+"59 Av. de la Gare de Gargan, 93190 Livry-Gargan",
+"52 Rue des Lieutenants Thomazo, 40100 Dax",
+"97 Rue de la Mare aux Carats, 78180 Montigny-le-Bretonneux",
+"80 Bd Saint-Germain, 75005 Paris",
+"31 Chem. des Bateliers, 44300 Nantes",
+"24 Rue Pierre de Coubertin, 56000 Vannes"]
+
 BIOS = [
   "Teaching since 10 years 💰💲",
   "I’m very friendly and approachable. I love discussing a wide range of subjects, exploring interesting things and learning together. I enjoy meeting new people",
@@ -69,6 +87,7 @@ puts 'Creating 10 fake users...'
     user.save if user.valid?
   end
     User.create(first_name:"Wissam", last_name: "Nasreddine", description: "dsfsdafsdafsd", email:"wissam.nasreddine@hec.edu", password: "123456")
+    User.create(first_name:"Delphine", last_name: "Abouab", description: "A small description about me and my hobbies. Why I like to leanr and teach via petit-scarabée.", email:"delphine@test.fr", password: "123456")
   puts 'Finished!'
 
   puts 'Creating 50 fake lessons...'
@@ -76,10 +95,11 @@ puts 'Creating 10 fake users...'
     lesson = Lesson.new(
       category: Lesson::CATEGORIES.sample,
       description: LESSON_DESCRIPTIONS.sample,
-      price: [10,15,20,25,30,35,40,50].sample,
+      price: (20..250).to_a.sample,
       duration: rand(1..5),
-      address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+      address: ADDRESSES.sample,
       )
+      lesson.photo.attach(io: URI.open("https://source.unsplash.com/random/?#{lesson.category}"), filename: "nes.png", content_type: "image/png")
       lesson.user = User.all.sample
       lesson.title = "#{lesson.category} #{LESSON_TITLES.sample}"
       lesson.save!

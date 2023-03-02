@@ -1,50 +1,59 @@
 <div class="container mt-3">
-<form class="flex my-2 my-lg-0">
-          <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
+  <form class="flex my-2 my-lg-0">
+            <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
   <div class="row">
     <div class="col-12">
       <h1>All Lessons</h1>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <% if @query %>
-        <p>You searched for <strong><%= @query %></strong>. We found <%= @lessons.count %> lessons out of our <%= Lesson.count %> that match your search.</p>
-      <% else %>
-        <p>All <%= Lesson.count %> Lessons</p>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <% @lessons.each do |lesson| %>
-      <div class="col-md-4 p-3">
-        <div class="lesson-card">
-          <div class="lesson-card-image" style="background-image: url('<%= lesson.photo %>')"></div>
-          <div class="lesson-card-content">
-            <div class="lesson-card-title">
-              <h3><%= lesson.title %></h3>
-            </div>
-            <p><%= lesson.category %></p>
-            <div class="flex">
-              <div class="flex align-items-center">
-                <i class="fa-solid fa-people-line"></i>
-                <span><%= lesson.description.first(10) %></span>
-              </div>
-              <div class="flex align-items-center ms-3">
-                <i class="fa-solid fa-euro-sign"></i>
-                <span><%= lesson.price %></span>
-              </div>
-            </div>
-          </div>
-          <div class="lesson-card-actions">
-            <%= link_to "More info", lesson_path(lesson) %>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col">
+        <% if @query %>
+          <p>You searched for <strong><%= @query %></strong>. We found <%= @lessons.count %> lessons out of our <%= Lesson.count %> that match your search.</p>
+        <% else %>
+          <p>All <%= Lesson.count %> Lessons</p>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+
+  <div class= "d-flex position-relative">
+    <div class= "me-2" style="width: 70%; height: 500px;">
+      <div class="row">
+        <% @lessons.each do |lesson| %>
+          <div class="col-md-6 p-3">
+            <div class="lesson-card">
+              <div class="lesson-card-image" style="background-image: url('<%= lesson.photo %>')"></div>
+              <div class="lesson-card-content">
+                <div class="lesson-card-title">
+                  <h3><%= lesson.title %></h3>
+                </div>
+                <p><%= lesson.category %></p>
+                <div class="flex">
+                  <div class="flex align-items-center">
+                    <i class="fa-solid fa-people-line"></i>
+                    <span><%= lesson.description.first(10) %></span>
+                  </div>
+                  <div class="flex align-items-center ms-3">
+                    <i class="fa-solid fa-euro-sign"></i>
+                    <span><%= lesson.price %></span>
+                  </div>
+                </div>
+              </div>
+              <div class="lesson-card-actions">
+                <%= link_to "More info", lesson_path(lesson) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+        <div class="index-map"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
   </div>
 </div>

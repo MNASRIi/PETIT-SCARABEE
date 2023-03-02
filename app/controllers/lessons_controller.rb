@@ -6,7 +6,13 @@ class LessonsController < ApplicationController
     else
       @lessons = policy_scope(Lesson)
     end
-    authorize @lessons, @query
+    @markers = @lessons.geocoded.map do |lesson|
+      {
+        lat: lesson.latitude,
+        lng: lesson.longitude,
+        info_window_html: "<h5>#{lesson.title}</h5>"
+      }
+    end
   end
 
   def new
