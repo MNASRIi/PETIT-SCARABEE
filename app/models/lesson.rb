@@ -10,4 +10,12 @@ class Lesson < ApplicationRecord
   validates :price, presence: true
   validates :duration, presence: true
   validates :address, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_category_and_price,
+    against: [ :title, :category, :price ],
+    using: {
+    tsearch: { prefix: true }
+    }
+
 end
