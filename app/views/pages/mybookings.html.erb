@@ -1,9 +1,0 @@
-<h1>Mybookings</h1>
-<ul>
-  <% @student_bookings.each do |booking| %>
-  <li>
-  <% booking.lesson.title%> at <% booking.date%> with <% booking.lesson.user%> during <% booking.lesson.duration%> hours - <% booking.status%>
-  </li>
-  
-  <% end %>
-</ul>
