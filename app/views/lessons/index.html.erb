@@ -1,3 +1,4 @@
+
 <div class="container mt-3">
   <form class="flex my-2 my-lg-0">
             <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
@@ -9,14 +10,18 @@
     </div>
   </div>
 
-    <div class="row">
-      <div class="col">
-        <% if @query %>
-          <p>You searched for <strong><%= @query %></strong>. We found <%= @lessons.count %> lessons out of our <%= Lesson.count %> that match your search.</p>
-        <% else %>
-          <p>All <%= Lesson.count %> Lessons</p>
-        <% end %>
-      </div>
+  <form class="flex my-2 my-lg-0">
+          <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @lessons.count %> lessons out of our <%= Lesson.count %> that match your search.</p>
+      <% else %>
+        <p>All <%= Lesson.count %> Lessons</p>
+      <% end %>
     </div>
 
   <div class= "d-flex position-relative">
@@ -56,4 +61,5 @@
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
   </div>
+</div>
 </div>
