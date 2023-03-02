@@ -1,26 +1,22 @@
 
 <div class="container mt-3">
-  <form class="flex my-2 my-lg-0">
-            <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-  <div class="row">
-    <div class="col-12">
-      <h1>All Lessons</h1>
-    </div>
+  <div class="container-fluid">
+  <%= form_with url: lessons_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a lesson"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
   </div>
 
-  <form class="flex my-2 my-lg-0">
-          <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
-  <div class="row">
+  <div class="row m-2">
     <div class="col">
       <% if @query %>
         <p>You searched for <strong><%= @query %></strong>. We found <%= @lessons.count %> lessons out of our <%= Lesson.count %> that match your search.</p>
       <% else %>
-        <p>All <%= Lesson.count %> Lessons</p>
+        <p> <%= Lesson.count %> Lessons</p>
       <% end %>
     </div>
   </div>

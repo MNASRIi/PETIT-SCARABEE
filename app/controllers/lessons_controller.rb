@@ -1,12 +1,12 @@
 class LessonsController < ApplicationController
   def index
+    skip_policy_scope
     if params[:query].present?
       @query = params[:query]
-      @lessons = Lesson.where("name LIKE ?", "%#{params[:query]}%")
+      @lessons = Lesson.search_by_title_and_category_and_price(params[:query])
     else
-      @lessons = policy_scope(Lesson)
+      @lessons = Lesson.all
     end
-<<<<<<< HEAD
     @markers = @lessons.geocoded.map do |lesson|
       {
         lat: lesson.latitude,
@@ -14,9 +14,6 @@ class LessonsController < ApplicationController
         info_window_html: "<h5>#{lesson.title}</h5>"
       }
     end
-=======
-    @lessons = Lesson.all
->>>>>>> master
   end
 
   def new

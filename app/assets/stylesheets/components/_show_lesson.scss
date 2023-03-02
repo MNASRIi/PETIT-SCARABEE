@@ -6,7 +6,7 @@
 #headline {
   background-size: cover;
   background-position: center;
-  height: 150px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,4 +51,8 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.sticky {
+  position: sticky;
 }
