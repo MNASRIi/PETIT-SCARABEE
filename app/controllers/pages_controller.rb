@@ -13,11 +13,11 @@ class PagesController < ApplicationController
 
   def mybookings
     @student_bookings = current_user.bookings
-    @teacher_bookings = current_user.requested_bookings
   end
 
   def mylessons
     @mylessons = current_user.lessons
+    @bookings = current_user.requested_bookings
   end
 
 end

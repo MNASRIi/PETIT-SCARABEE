@@ -1,0 +1,17 @@
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header"><%= booking.user.first_name %> <%= booking.user.last_name %></div>
+    <div class="card-body text-dark">
+      <h5 class="card-title"><%= booking.date %></h5>
+        <div class = "d-flex">
+          <% if booking.status == "Pending" %>
+            <%= link_to "Accept", accept_booking_path(booking), data: { turbo_method: :patch }  %>
+            <%= link_to "Deny", decline_booking_path(booking), data: { turbo_method: :patch } %>
+          <% elsif booking.status == "Accepted"%>
+            <p class = "btn btn-outline-success"><%= booking.status %></p>
+          <% else %>
+            <p class = "btn btn-outline-danger"><%= booking.status %></p>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
