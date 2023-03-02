@@ -1,4 +1,4 @@
-<article class="postcard", data-controller='popup'>
+<article class="postcard", data-controller="popup">
   <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}", class: "postcard__img" unless booking.lesson.photo.attached?%>
   <%= cl_image_tag booking.lesson.photo.key, alt: "Image for #{booking.lesson.title}", class: "postcard__img" if booking.lesson.photo.attached?%>
   <div class="d-flex justify-content-between">
@@ -6,7 +6,7 @@
       <span class="d-flex align-item-center">
         <h2 class="postcard__title my-auto">
           <%= booking.lesson.title %> by
-          <strong data-action='click=>popup#show'>
+          <strong data-action='click=>popup#show'  data-popup-card-value="<%= @card.to_json %>">
             <%= booking.lesson.user.first_name %> <%= booking.lesson.user.last_name %>
           </strong>
         </h2>
