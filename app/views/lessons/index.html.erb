@@ -1,3 +1,4 @@
+
 <div class="container mt-3">
   <form class="flex my-2 my-lg-0">
             <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
@@ -9,13 +10,49 @@
     </div>
   </div>
 
-    <div class="row">
-      <div class="col">
-        <% if @query %>
-          <p>You searched for <strong><%= @query %></strong>. We found <%= @lessons.count %> lessons out of our <%= Lesson.count %> that match your search.</p>
-        <% else %>
-          <p>All <%= Lesson.count %> Lessons</p>
-        <% end %>
+  <form class="flex my-2 my-lg-0">
+          <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @lessons.count %> lessons out of our <%= Lesson.count %> that match your search.</p>
+      <% else %>
+        <p>All <%= Lesson.count %> Lessons</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @lessons.each do |lesson| %>
+      <div class="col-md-4 p-3">
+        <div class="card" style="width: 25rem; border-radius: 10px;">
+            <%= image_tag 'lesson-default.avif', alt: "Default image for #{lesson.title}" , style: "border-radius: 10px", class: "postcard__img" unless lesson.photo.attached?%>
+            <%= cl_image_tag lesson.photo.key, alt: "Image for #{lesson.title}", style: "border-radius: 10px", class: "postcard__img" if lesson.photo.attached?%>
+
+
+          <div class="lesson-card-content">
+            <div class="lesson-card-title">
+              <h5><%= lesson.title %></h5>
+            </div>
+
+            <div class="flex">
+              <div class="flex align-items-center">
+                <i class="fa-solid fa-people-line"></i>
+                <span><%= lesson.user.first_name%> <%= lesson.user.last_name%></span>
+              </div>
+              <div class="flex align-items-center ms-3">
+                <i class="fa-solid fa-euro-sign"></i>
+                <span><%= lesson.price %></span>
+              </div>
+            </div>
+          </div>
+          <%= link_to lesson_path(lesson), class: "btn btn-outline-primary" do %>
+            More info
+          <% end %>
+        </div>
       </div>
     </div>
 
@@ -56,4 +93,5 @@
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
   </div>
+</div>
 </div>
