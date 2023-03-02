@@ -1,5 +1,9 @@
 
 <div class="container mt-3">
+<form class="flex my-2 my-lg-0">
+          <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
   <div class="row">
     <div class="col-12">
       <h1>All Lessons</h1>
@@ -24,9 +28,11 @@
   <div class="row">
     <% @lessons.each do |lesson| %>
       <div class="col-md-4 p-3">
-        <div class="card" style="width: 25rem;">
-        <img src= lesson.photo class="card-img-top" alt="photo">
-          <div class="lesson-card-image" style="background-image: url('<%= lesson.photo %>')"></div>
+        <div class="card" style="width: 25rem; border-radius: 10px;">
+            <%= image_tag 'lesson-default.avif', alt: "Default image for #{lesson.title}" , style: "border-radius: 10px", class: "postcard__img" unless lesson.photo.attached?%>
+            <%= cl_image_tag lesson.photo.key, alt: "Image for #{lesson.title}", style: "border-radius: 10px", class: "postcard__img" if lesson.photo.attached?%>
+
+
           <div class="lesson-card-content">
             <div class="lesson-card-title">
               <h5><%= lesson.title %></h5>
@@ -35,7 +41,7 @@
             <div class="flex">
               <div class="flex align-items-center">
                 <i class="fa-solid fa-people-line"></i>
-                <span><%= lesson.description.first(10) %></span>
+                <span><%= lesson.user.first_name%> <%= lesson.user.last_name%></span>
               </div>
               <div class="flex align-items-center ms-3">
                 <i class="fa-solid fa-euro-sign"></i>
@@ -43,25 +49,12 @@
               </div>
             </div>
           </div>
-          <div class="lesson-card-actions">
-            <%= link_to "More info", lesson_path(lesson) %>
-          </div>
+          <%= link_to lesson_path(lesson), class: "btn btn-outline-primary" do %>
+            More info
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-
-<div class="card" style="width: 18rem;">
-  <img src= lesson.photo class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"> {#lesson.title}</h5>
-    <p class="card-text"><span> {#lesson.description.first(10)]/span></p>
-    <div class="lesson-card-actions">
-    <a href="#" class="btn btn-primary">More info</a>
-    <div class="lesson-card-actions">
-    <%= link_to "More info", lessons_path %>
-          </div>
-          </div>
-  </div>
 </div>
