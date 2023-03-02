@@ -14,26 +14,26 @@
     <div class="postcard__preview-txt"><%= lesson.description %></div>
       <div class="d-flex justify-content-between">
         <ul class="postcard__tagbox">
-          <li class="tag__item"><i class="fas fa-tag mr-2"></i> <%= lesson.price %> €/h</li>
+          <li class="tag__item"><i class="fas fa-tag mr-2"></i> <%= lesson.price %> €</li>
           <li class="tag__item"><i class="fas fa-clock mr-2"></i> <%= lesson.duration %> h</li>
-          <li class="tag__item play blue">
-            <i class="fas fa-play mr-2"></i> Total price: <%= lesson.duration * lesson.price %> €
-          </li>
         </ul>
       </div>
       <div class="mt-3">
           <p>
-            <a class="btn btn-outline-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">See bookings</a>
+            <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">See bookings</a>
           </p>
           <div class="collapse" id="collapseExample">
-            <% if @bookings.empty? %>
-              <h5 class="mt-3 p-2">No pending request</h5>
-            <% else %>
-              <% @bookings.each do |booking| %>
-                <%= render "pages/request_card", booking: booking %>
-              <% end %>
-            <% end %>
+              <div class="d-flex row">
+                <% if @bookings.empty? %>
+                  <h5 class="mt-3 p-2">No pending request</h5>
+                <% else %>
+                    <% @bookings.each do |booking| %>
+                      <%= render "pages/request_card", booking: booking %>
+                    <% end %>
+                <% end %>
+            </div>
           </div>
       </div>
   </div>
 </article>
+
