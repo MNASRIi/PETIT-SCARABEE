@@ -6,7 +6,7 @@ class LessonsController < ApplicationController
     else
       @lessons = policy_scope(Lesson)
     end
-    authorize @lessons, @query
+    @lessons = Lesson.all
   end
 
   def new
