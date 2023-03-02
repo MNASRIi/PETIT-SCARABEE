@@ -1,7 +1,7 @@
 class Lesson < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   CATEGORIES = %w(violin guitar singing piano yoga chess crossfit stretching football basketball handball golf swimming)
   validates :category, presence: true, inclusion: { in: CATEGORIES, message: "This is not a valid category" }

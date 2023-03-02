@@ -1,0 +1,47 @@
+<article class="postcard", data-controller="popup">
+  <%= image_tag 'lesson-default.avif', alt: "Default image for #{booking.lesson.title}", class: "postcard__img" unless booking.lesson.photo.attached?%>
+  <%= cl_image_tag booking.lesson.photo.key, alt: "Image for #{booking.lesson.title}", class: "postcard__img" if booking.lesson.photo.attached?%>
+  <div class="d-flex justify-content-between">
+    <div class="postcard__text">
+      <span class="d-flex align-item-center">
+        <h2 class="postcard__title my-auto">
+          <%= booking.lesson.title %> by
+          <strong data-action='click=>popup#show'  data-popup-card-value="<%= @card.to_json %>">
+            <%= booking.lesson.user.first_name %> <%= booking.lesson.user.last_name %>
+          </strong>
+        </h2>
+        <%= image_tag 'avatar_default.jpg', alt: "Default avatar for #{booking.lesson.user.first_name} #{booking.lesson.user.last_name}", class: "rounded-circle shadow ms-3 my-auto object-fit-cover", style:"width: 50px; height: 50px;" unless booking.lesson.user.avatar.attached?%>
+        <%= cl_image_tag booking.lesson.user.avatar.key, alt: "Avatar #{booking.lesson.user.first_name} #{booking.lesson.user.last_name}", class: "rounded-circle shadow ms-3 my-auto object-fit-cover", style:"width: 50px; height: 50px;" if booking.lesson.user.avatar.attached?%>
+      </span>
+      <div class="postcard__subtitle small">
+        <h4><%= booking.lesson.category %></h4>
+      </div>
+      <div class="postcard__bar"></div>
+      <div class="postcard__preview-txt"><%= booking.lesson.description %></div>
+        <div class="d-flex justify-content-between">
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i> <%= booking.lesson.price %> €/h</li>
+            <li class="tag__item"><i class="fas fa-clock mr-2"></i> <%= booking.lesson.duration %> h</li>
+          </ul>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+          <% if booking.status == "Pending" %>
+            <span>
+              Status: <p class = "my-auto btn btn-secondary"><%= booking.status %></p>
+            </span>
+            <%= link_to "Cancel", cancel_booking_path(booking), data: { turbo_method: :patch }, class: "my-auto btn btn-danger" %>
+          <% elsif booking.status == "Accepted"%>
+            <span>
+              Status: <p class = "my-auto btn btn-success"><%= booking.status %></p>
+            </span>
+            <%= link_to "Cancel", cancel_booking_path(booking), data: { turbo_method: :patch }, class: "my-auto btn btn-danger" %>
+          <% else %>
+            <span>
+              Status: <p class = "my-auto btn btn-danger"><%= booking.status %></p>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

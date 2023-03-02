@@ -1,4 +1,4 @@
 <%= simple_form_for [@lesson, @booking] do |f| %>
-  <%= f.input :date, as: :date, order: [:day, :month, :year] %>
-  <%=f.button :submit, class: "btn-primary", value: "Book"%>
+  <%= f.input :date, as: :date, html5: true, order: [:day, :month, :year] %>
+  <%=f.button :submit, class: "btn-primary"%>
 <% end %>
