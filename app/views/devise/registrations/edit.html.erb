@@ -46,7 +46,7 @@
   </div>
 <% end %>
 
-<%= link_to "Back", :back, class: "btn btn-primary mt-3" %>
+<%= link_to "Back", :back, class: "btn btn-dark mt-3" %>
 
-<div class="mt-5">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name),class: "btn btn-danger mt-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div class="mt-5">Unhappy? <%= button_to "Delete my account", registration_path(resource_name),class: "btn btn-danger mt-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 </div>
