@@ -1,11 +1,40 @@
-<div bg-image="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png); height: 100vh;">
-  <div class="container">
-    <h1>Pétit <strong>Scarabée</strong> for <strong>curious people</strong>!</h1>
-    <p>
-      <span data-controller="typed-js"></span>
-    </p>
-    <a class="btn btn-primary btn-lg" href="https://petit-scarabee.herokuapp.com/users/sign_up">Sign Up</a>
+<div class="banner">
+    <%= image_tag "logo.png", alt:"Yellow logo", class:"logo" %>
+    <div>
+      <h1>Petit Scarabée for curious people</h1>
+      <h2>Learn everything, meet everybody</h2>
+      <%= link_to "See the lessons", lessons_path, class:"button" %>
+    </div>
+    <%= image_tag "lesson-default.avif", alt: "background for banner" %>
+</div>
+
+<div class="section">
+  <div class="card">
+    <%= image_tag "teach-pic.avif", alt: "Picture for teach card" %>
+    <div class="card-text">
+      <h3>Teach</h3>
+      <p>Make ends meet teaching your favorite hoobies.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <%= image_tag "learn-pic.avif", alt: "Picture for learn card" %>
+    <div class="card-text">
+      <h3>Learn</h3>
+      <p>Discover and learn on any possible subject.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <%= image_tag "meet-pic.avif", alt: "Picture for meet card" %>
+    <div class="card-text">
+      <h3>Meet</h3>
+      <p>Meet passionate people sharing the same interests than you</p>
+    </div>
   </div>
 </div>
-<%= link_to "Lessons", lessons_path, class: "btn btn-dark btn-lg" %>
-<%= link_to "Dashboard", dashboard_path, class: "btn btn-dark btn-lg" %>
+
+<div class="footer">
+  <%= image_tag "logo-y.png", alt:"Yellow logo" %>
+  <h4>Delphine Abouab - Stephan Milosavljevic - Wissam Nassredine</h4>
+</div>
