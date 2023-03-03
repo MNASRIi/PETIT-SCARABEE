@@ -12,10 +12,14 @@
   width: 30%;
   height: 80vh;
   position: sticky;
-  top: 70px;
-  right: 20px;
+  top: 0px;
+  margin-right: 20px;
+  position: relative;
+  border-radius: 10px;
 }
 
 .show-map {
   width: 93%;
-  height: 72vh;}
+  height: 72vh;
+  border-radius: 10px;
+}
