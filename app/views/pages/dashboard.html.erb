@@ -1,18 +1,14 @@
-<<<<<<< HEAD
-<div class="container">
-=======
 <div class="container" data-controller='popup'>
->>>>>>> master
   <div class="card my-4">
     <div class="card-header p-3">
       <h5 class="m-auto"><%= @user.first_name %> <%= @user.last_name %></h5>
     </div>
     <div class="p-3 d-flex">
-      <%= image_tag 'avatar_default.jpg', alt: "Default avatar for #{@user.first_name} #{@user.last_name}", class: "rounded-circle shadow m-2 object-fit-cover", style:"width: 150px; height: 150px;" unless @user.avatar.attached?%>
+      <%= image_tag 'avatar_default.png', alt: "Default avatar for #{@user.first_name} #{@user.last_name}", class: "rounded-circle shadow m-2 object-fit-cover", style:"width: 150px; height: 150px;" unless @user.avatar.attached?%>
       <%= cl_image_tag @user.avatar.key, alt: "Avatar #{@user.first_name} #{@user.last_name}", class: "rounded-circle shadow m-2", style:"width: 150px;" if @user.avatar.attached?%>
       <div class="ms-5">
         <p><%= @user.description %></p>
-        <%= link_to "Edit my profile", edit_user_registration_path(@user), class: "btn btn-primary" %>
+        <%= link_to "Edit my profile", edit_user_registration_path(@user), class: "btn btn-dark" %>
       </div>
     </div>
   </div>

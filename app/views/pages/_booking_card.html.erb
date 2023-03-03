@@ -10,7 +10,7 @@
             <%= booking.lesson.user.first_name %> <%= booking.lesson.user.last_name %>
           </strong>
         </h2>
-        <%= image_tag 'avatar_default.jpg', alt: "Default avatar for #{booking.lesson.user.first_name} #{booking.lesson.user.last_name}", class: "rounded-circle shadow ms-3 my-auto object-fit-cover", style:"width: 50px; height: 50px;" unless booking.lesson.user.avatar.attached?%>
+        <%= image_tag 'avatar_default.png', alt: "Default avatar for #{booking.lesson.user.first_name} #{booking.lesson.user.last_name}", class: "rounded-circle shadow ms-3 my-auto object-fit-cover", style:"width: 50px; height: 50px;" unless booking.lesson.user.avatar.attached?%>
         <%= cl_image_tag booking.lesson.user.avatar.key, alt: "Avatar #{booking.lesson.user.first_name} #{booking.lesson.user.last_name}", class: "rounded-circle shadow ms-3 my-auto object-fit-cover", style:"width: 50px; height: 50px;" if booking.lesson.user.avatar.attached?%>
       </span>
       <div class="postcard__subtitle small">

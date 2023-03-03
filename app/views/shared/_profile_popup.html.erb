@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <%= image_tag 'avatar_default.jpg', alt: "Default avatar for #{user.first_name} #{user.last_name}", class: "rounded-circle shadow m-2 object-fit-cover", style:"width: 150px; height: 150px;" unless user.avatar.attached?%>
+        <%= image_tag 'avatar_default.png', alt: "Default avatar for #{user.first_name} #{user.last_name}", class: "rounded-circle shadow m-2 object-fit-cover", style:"width: 150px; height: 150px;" unless user.avatar.attached?%>
         <%= cl_image_tag user.avatar.key, alt: "Avatar #{user.first_name} #{user.last_name}", class: "rounded-circle shadow m-2", style:"width: 150px;" if user.avatar.attached?%>
         <h1 class="modal-title fs-5" id="exampleModalLabel">Profile of: <%= user.first_name %> <%= user.last_name %></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
