@@ -24,10 +24,10 @@
           </p>
           <div class="collapse" id="collapseExample">
               <div class="d-flex row">
-                <% if @bookings.empty? %>
+                <% if lesson.bookings.empty? %>
                   <h5 class="mt-3 p-2">No pending request</h5>
                 <% else %>
-                    <% @bookings.each do |booking| %>
+                    <% lesson.bookings.each do |booking| %>
                       <%= render "pages/request_card", booking: booking %>
                     <% end %>
                 <% end %>
@@ -36,4 +36,3 @@
       </div>
   </div>
 </article>
-
