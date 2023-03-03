@@ -1,31 +1,44 @@
 <div class= "container-sm mt-2">
   <div class="row">
-  <div class="col-9">
+  <div class="col-8">
     <div id="headline" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @lesson.photo.attached? ? cl_image_path(@lesson.photo.key) : image_path('lesson-default.avif')%>)"><%= @lesson.title %>
     </div>
 
     <div class="card mt-2 p-2" id="teacher" style= "border-radius: 10px" >
       <div class="row">
-          <div class="col-3">
-            <%= image_tag 'avatar_default.png', alt: "Default avatar for #{@lesson.user.first_name} #{@lesson.user.last_name}", class: "rounded-circle shadow m-2 object-fit-cover", style:"width: 100px; height: 100px;" unless @lesson.user.avatar.attached?%>
-            <%= cl_image_tag @lesson.user.avatar.key, crop: :thumb, gravity: :face, alt: "Avatar #{@lesson.user.first_name} #{@lesson.user.last_name}", class: "rounded-circle shadow m-2", style:"width: 100px; height: 100px; object-fit: cover;" if @lesson.user.avatar.attached?%>
-            <p style="font-size: 12px"> <%= @lesson.bookings.count%> lesson(s) given to date</p>
+          <div class="col-3 d-flex align-items-center flex-column">
+            <%= image_tag 'avatar_default.jpg', alt: "Default avatar for #{@lesson.user.first_name} #{@lesson.user.last_name}", class: "rounded-circle shadow m-2 object-fit-cover", style:"width: 140px; height: 140px;" unless @lesson.user.avatar.attached?%>
+            <%= cl_image_tag @lesson.user.avatar.key, crop: :thumb, gravity: :face, alt: "Avatar #{@lesson.user.first_name} #{@lesson.user.last_name}", class: "rounded-circle shadow m-2", style:"width: 140px; height: 140px" if @lesson.user.avatar.attached?%>
+            <p style="font-size: 15px"> <strong><%= @lesson.bookings.count%> lesson(s)</strong> given to date</p>
           </div>
           <div class="col-9">
-            <p><strong>Teacher:</strong> <%= @lesson.user.first_name%> <%= @lesson.user.last_name%></p>
-            <p><strong>Bio:</strong> <%= @lesson.user.description%></p>
+            <div class="row m-4">
+              <span><i class="fa-solid fa-person-chalkboard"></i> <strong>  Teacher:</strong> <%= @lesson.user.first_name%> <%= @lesson.user.last_name%> </span>
+            </div>
+            <div class="row m-4">
+              <span><i class="fa-solid fa-scroll"></i> <strong>  Bio:</strong> <%= @lesson.user.description%></span>
+            </div>
+            <div class="row m-4">
+              <span><i class="fa-solid fa-paperclip"></i><strong>  Lesson's description:</strong> <%= @lesson.description%></span>
+             </div>
+            <div class="row m-4">
+              <span><i class="fa-regular fa-money-bill-1"></i><strong>  Price:</strong> <%= @lesson.price *  @lesson.duration %> euros</span>
+            </div>
+            <div class="row m-4">
+              <span><i class="fa-solid fa-location-pin"></i><strong>  Address:</strong> <%= @lesson.address%></span>
+              </div>
+            <div class="show-map ms-4"
+              data-controller="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
           </div>
       </div>
     </div>
 
-    <div class="card mt-2 p-2" id="lessondetails" style= "border-radius: 10px">
-      <p><strong>Lesson's description:</strong> <%= @lesson.description%></p>
-      <p><strong>Price:</strong> <%= @lesson.price *  @lesson.duration %> euros</p>
-      <p><strong>Address:</strong> <%= @lesson.address%></p>
     </div>
-    </div>
-    <div class="col-3">
-      <div class= "card mt-2 p-2 position-sticky-fixed" style= "border-radius: 10px">
+    <div class="col-4">
+      <div class= "card mt-2 p-3 position-sticky-fixed d-flex align-items-center flex-column sticky" style= "border-radius: 10px">
         <%= render "bookings/form" %>
       </div>
     </div>

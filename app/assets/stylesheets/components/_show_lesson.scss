@@ -6,7 +6,7 @@
 #headline {
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 265px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,4 +55,10 @@
 
 .sticky {
   position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+i {
+  font-size: 17px;
 }

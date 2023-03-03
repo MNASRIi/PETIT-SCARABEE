@@ -39,6 +39,8 @@ class LessonsController < ApplicationController
     @booking = Booking.new
     @booking.lesson = @lesson
     authorize @lesson
+    @markers =  [{ lat: @lesson.latitude, lng: @lesson.longitude, info_window_html: "<p>#{@lesson.title}</p>"
+    } ]
   end
 
   def destroy

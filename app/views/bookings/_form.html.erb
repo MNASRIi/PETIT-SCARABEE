@@ -1,4 +1,4 @@
-<%= simple_form_for [@lesson, @booking] do |f| %>
-  <%= f.input :date, as: :date, html5: true, order: [:day, :month, :year] %>
+<%= simple_form_for [@lesson, @booking], html: { data: {controller: 'flatpickr'} } do |f| %>
+  <%= f.input :date, label: false, as: :string, input_html: { class: 'd-none', data: { flatpickr_target: 'startDateInput' } }%>
   <%=f.button :submit, class: "btn btn-outline-dark", value: "Book"%>
 <% end %>
