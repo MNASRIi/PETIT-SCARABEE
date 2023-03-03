@@ -21,74 +21,44 @@
     </div>
   </div>
 
-  <div class="row">
+<div class="container d-flex">
+  <div class="row" style="width: 70%">
     <% @lessons.each do |lesson| %>
-      <div class="col-md-4 p-3">
-        <div class="card" style="width: 25rem; border-radius: 10px;">
-            <%= image_tag 'lesson-default.avif', alt: "Default image for #{lesson.title}" , style: "border-radius: 10px", class: "postcard__img" unless lesson.photo.attached?%>
-            <%= cl_image_tag lesson.photo.key, alt: "Image for #{lesson.title}", style: "border-radius: 10px", class: "postcard__img" if lesson.photo.attached?%>
+        <div class="col-6 p-3">
+          <div class="card" style="width: 25rem; border-radius: 10px;">
+              <%= image_tag 'lesson-default.avif', alt: "Default image for #{lesson.title}" , style: "border-radius: 10px", class: "card-img-top" unless lesson.photo.attached?%>
+              <%= cl_image_tag lesson.photo.key, alt: "Image for #{lesson.title}", style: "border-radius: 10px", class: "card-img-top" if lesson.photo.attached?%>
 
-
-          <div class="lesson-card-content">
-            <div class="lesson-card-title">
-              <h5><%= lesson.title %></h5>
-            </div>
-
-            <div class="flex">
-              <div class="flex align-items-center">
-                <i class="fa-solid fa-people-line"></i>
-                <span><%= lesson.user.first_name%> <%= lesson.user.last_name%></span>
+            <div class="lesson-card-content">
+              <div class="lesson-card-title">
+                <h5><%= lesson.title %></h5>
               </div>
-              <div class="flex align-items-center ms-3">
-                <i class="fa-solid fa-euro-sign"></i>
-                <span><%= lesson.price %></span>
-              </div>
-            </div>
-          </div>
-          <%= link_to lesson_path(lesson), class: "btn btn-outline-primary" do %>
-            More info
-          <% end %>
-        <% end %>
-        </div>
-      </div>
-    </div>
 
-  <div class= "d-flex position-relative">
-    <div class= "me-2" style="width: 70%; height: 500px;">
-      <div class="row">
-        <% @lessons.each do |lesson| %>
-          <div class="col-md-6 p-3">
-            <div class="lesson-card">
-              <div class="lesson-card-image" style="background-image: url('<%= lesson.photo %>')"></div>
-              <div class="lesson-card-content">
-                <div class="lesson-card-title">
-                  <h3><%= lesson.title %></h3>
+              <div class="flex">
+                <div class="flex align-items-center">
+                  <i class="fa-solid fa-people-line"></i>
+                  <span><%= lesson.user.first_name%> <%= lesson.user.last_name%></span>
                 </div>
-                <p><%= lesson.category %></p>
-                <div class="flex">
-                  <div class="flex align-items-center">
-                    <i class="fa-solid fa-people-line"></i>
-                    <span><%= lesson.description.first(10) %></span>
-                  </div>
-                  <div class="flex align-items-center ms-3">
-                    <i class="fa-solid fa-euro-sign"></i>
-                    <span><%= lesson.price %></span>
-                  </div>
+                <div class="flex align-items-center ms-3">
+                  <i class="fa-solid fa-euro-sign"></i>
+                  <span><%= lesson.price %></span>
                 </div>
               </div>
-              <div class="lesson-card-actions">
-                <%= link_to "More info", lesson_path(lesson) %>
-              </div>
             </div>
+            <%= link_to lesson_path(lesson), class: "btn btn-outline-primary" do %>
+              More info
+            <% end %>
           </div>
-        <% end %>
-      </div>
-    </div>
-        <div class="index-map"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
+        <% end %>
+    </div>
+
+    <div class="index-map ms-5"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+</div>
   </div>
 </div>
 </div>
