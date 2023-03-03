@@ -8,7 +8,7 @@
       <div class="row">
           <div class="col-3">
             <%= image_tag 'avatar_default.png', alt: "Default avatar for #{@lesson.user.first_name} #{@lesson.user.last_name}", class: "rounded-circle shadow m-2 object-fit-cover", style:"width: 100px; height: 100px;" unless @lesson.user.avatar.attached?%>
-            <%= cl_image_tag @lesson.user.avatar.key, crop: :thumb, gravity: :face, alt: "Avatar #{@lesson.user.first_name} #{@lesson.user.last_name}", class: "rounded-circle shadow m-2", style:"width: 100px; height: 100px" if @lesson.user.avatar.attached?%>
+            <%= cl_image_tag @lesson.user.avatar.key, crop: :thumb, gravity: :face, alt: "Avatar #{@lesson.user.first_name} #{@lesson.user.last_name}", class: "rounded-circle shadow m-2", style:"width: 100px; height: 100px; object-fit: cover;" if @lesson.user.avatar.attached?%>
             <p style="font-size: 12px"> <%= @lesson.bookings.count%> lesson(s) given to date</p>
           </div>
           <div class="col-9">

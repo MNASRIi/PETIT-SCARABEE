@@ -1,6 +1,6 @@
 
 <div class="container mt-3">
-  <div class="container">
+  <div class="container ms-1" style="width: 65%;">
   <%= form_with url: lessons_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
@@ -27,7 +27,7 @@
         <div class="col-6 p-3">
           <div class="card" style="width: 25rem; border-radius: 10px;">
               <%= image_tag 'lesson-default.avif', alt: "Default image for #{lesson.title}" , style: "border-radius: 10px", class: "card-img-top" unless lesson.photo.attached?%>
-              <%= cl_image_tag lesson.photo.key, alt: "Image for #{lesson.title}", style: "border-radius: 10px", class: "card-img-top" if lesson.photo.attached?%>
+              <%= cl_image_tag lesson.photo.key, alt: "Image for #{lesson.title}", style: "border-radius: 10px; max-height: 270px; width: 100%; object-fit: cover;", class: "card-img-top" if lesson.photo.attached?%>
 
             <div class="lesson-card-content">
               <div class="lesson-card-title">
@@ -45,7 +45,7 @@
                 </div>
               </div>
             </div>
-            <%= link_to lesson_path(lesson), class: "btn btn-outline-primary" do %>
+            <%= link_to lesson_path(lesson), class: "btn btn-outline-dark" do %>
               More info
             <% end %>
           </div>
