@@ -32,15 +32,15 @@ ADDRESSES = ["34 Rue de la Hulotais, 35400 Saint-Malo",
 
 BIOS = [
   "Teaching since 10 years 💰💲",
-  "I’m very friendly and approachable. I love discussing a wide range of subjects, exploring interesting things and learning together. I enjoy meeting new people",
-  "Looking to build a class of 5 to 10 students.",
+  "💰💲I’m very friendly and approachable. I love discussing a wide range of subjects, exploring interesting things and learning together. I enjoy meeting new people",
+  "📚 Looking to build a class of 5 to 10 students.",
   "✨前VIPKid老师🍎教授过10,000节儿童和成人英语课程🎉B.Ed.,TESOL,TEFL, 25年经验🎉WonderSkills, RAZ, Oxford Phonics.",
-  "Here to help you accomplish your goals. Through my teaching experience, I have learned where my strengths are as a teacher.",
+  "💥🌻Here to help you accomplish your goals. Through my teaching experience, I have learned where my strengths are as a teacher.",
   "💥🌻 TEFL-certified with over 15 years of training experience. Expert in seduction 🌈 ✏️📚 💰💲.",
-  "All matters nerd🤓 here to help you gain confidence when speaking! I am an enthusiastic, motivating and supportive teacher with a two year experience.",
-  "I live in South Africa and I am a high-school graduate. I love English and helping others improve their English skills.",
-  "I will let the student decide what they want to learn about, where do they need help or what are they struggling with. Have relaxed conversations and create a safe/warm space.",
-  "Want to improve your CONFIDENCE✅? Let's get started! 👨‍🏫 I am a nerd like everyone else in this website."
+  "📚 All matters nerd🤓 here to help you gain confidence when speaking! I am an enthusiastic, motivating and supportive teacher with a two year experience.",
+  "💥🌻I live in South Africa and I am a high-school graduate. I love English and helping others improve their English skills.",
+  "✏️📚I will let the student decide what they want to learn about, where do they need help or what are they struggling with. Have relaxed conversations and create a safe/warm space.",
+  "✏️📚Want to improve your CONFIDENCE✅? Let's get started! 👨‍🏫 I am a nerd like everyone else in this website."
 ]
 
 LESSON_TITLES = [

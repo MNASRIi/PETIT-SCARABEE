@@ -3,7 +3,7 @@ class Lesson < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
 
-  CATEGORIES = %w(violin guitar singing piano yoga chess crossfit stretching football basketball handball golf swimming)
+  CATEGORIES = %w(Violin Guitar Singing Piano Yoga Chess Crossfit Stretching Football Basketball Handball Golf Swimming)
   validates :category, presence: true, inclusion: { in: CATEGORIES, message: "This is not a valid category" }
   validates :title, presence: true, length: { minimum: 5 }
   validates :description, presence: true, length: { minimum: 5 }
