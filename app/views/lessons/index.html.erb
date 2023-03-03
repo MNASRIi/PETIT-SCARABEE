@@ -25,23 +25,20 @@
   <div class="row" style="width: 70%">
     <% @lessons.each do |lesson| %>
         <div class="col-6 p-3">
-          <div class="card" style="width: 25rem; border-radius: 10px;">
+          <div class="card" style="width: 100%; border-radius: 10px;">
               <%= image_tag 'lesson-default.avif', alt: "Default image for #{lesson.title}" , style: "border-radius: 10px", class: "card-img-top" unless lesson.photo.attached?%>
-              <%= cl_image_tag lesson.photo.key, alt: "Image for #{lesson.title}", style: "border-radius: 10px; max-height: 270px; width: 100%; object-fit: cover;", class: "card-img-top" if lesson.photo.attached?%>
+              <%= cl_image_tag lesson.photo.key, alt: "Image for #{lesson.title}", style: "border-radius: 10px; max-height: 200px; width: 100%; object-fit: cover;", class: "card-img-top" if lesson.photo.attached?%>
 
-            <div class="lesson-card-content">
+            <div class="lesson-card-content p-3">
               <div class="lesson-card-title">
                 <h5><%= lesson.title %></h5>
               </div>
 
               <div class="flex">
-                <div class="flex align-items-center">
-                  <i class="fa-solid fa-people-line"></i>
-                  <span><%= lesson.user.first_name%> <%= lesson.user.last_name%></span>
-                </div>
-                <div class="flex align-items-center ms-3">
-                  <i class="fa-solid fa-euro-sign"></i>
-                  <span><%= lesson.price %></span>
+                <div class=" align-items-center">
+                  <p><span><i class="fa-solid fa-people-line"></i> <%= lesson.user.first_name%> <%= lesson.user.last_name%></span></p>
+                  <p><span class="p-1 rounded bg-secondary" style="--bs-bg-opacity: .5;"><i class="fas fa-clock mr-2"></i> <%= lesson.duration %> h</span></p>
+                  <p><span class="p-1 rounded bg-secondary" style="--bs-bg-opacity: .5;"><i class="fas fa-tag mr-2"></i> <%= lesson.price %> €</span></p>
                 </div>
               </div>
             </div>
@@ -53,7 +50,7 @@
         <% end %>
     </div>
 
-    <div class="index-map ms-5"
+    <div class="index-map ms-5 mt-3 rounded"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
