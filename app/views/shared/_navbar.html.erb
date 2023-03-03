@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "lessons", class: "navbar-brand" do %>
       <%= image_tag "logo-2.png" %>
@@ -19,7 +19,7 @@
             <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag 'avatar_default.jpg', alt: "Default avatar for #{current_user.first_name} #{current_user.last_name}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.avatar.attached?%>
+            <%= image_tag 'avatar_default.png', alt: "Default avatar for #{current_user.first_name} #{current_user.last_name}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.avatar.attached?%>
             <%= cl_image_tag current_user.avatar.key, alt: "Avatar #{current_user.first_name} #{current_user.last_name}", alt: "Default avatar for #{current_user.first_name} #{current_user.last_name}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.avatar.attached?%>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>

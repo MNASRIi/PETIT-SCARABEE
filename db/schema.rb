@@ -44,11 +44,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_150511) do
 
   create_table "bookings", force: :cascade do |t|
     t.date "date"
-    t.string "status", default: "pending", null: false
     t.bigint "lesson_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
     t.index ["lesson_id"], name: "index_bookings_on_lesson_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -58,8 +58,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_150511) do
     t.string "title"
     t.string "description"
     t.string "address"
-    t.integer "price", default: 10
-    t.integer "duration", default: 1
+    t.integer "price"
+    t.integer "duration"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
